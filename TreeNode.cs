@@ -1,4 +1,4 @@
-﻿namespace Leet.BinaryTrees;
+﻿namespace Leet;
 
 public class TreeNode
 {

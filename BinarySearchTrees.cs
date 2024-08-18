@@ -1,6 +1,6 @@
-﻿namespace Leet.BinaryTrees.BinarySearchTrees;
+﻿namespace Leet;
 
-internal static class Validate
+public static class BinarySearchTrees
 {
     public static bool IsValidBST(TreeNode node)
     {
@@ -24,4 +24,3 @@ internal static class Validate
             TraverseBst(node.right, result);
     }
 }
-
