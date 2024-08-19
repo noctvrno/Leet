@@ -1,28 +1,5 @@
 ﻿using Leet;
 
-var root = new TreeNode(
-    0,
-    new TreeNode(
-        1,
-        new TreeNode(
-            0,
-            new TreeNode(1),
-            new TreeNode(1)),
-        new TreeNode(
-            0,
-            new TreeNode(1),
-            new TreeNode(1))),
-    new TreeNode(
-        2,
-        new TreeNode(
-            0,
-            new TreeNode(2),
-            new TreeNode(2)),
-        new TreeNode(
-            0,
-            new TreeNode(2),
-            new TreeNode(2))));
-
-BinaryTrees.ReverseOddLevels(root);
+int[] ints = Arrays.SearchRange([2, 2], 2);
 
 return;
