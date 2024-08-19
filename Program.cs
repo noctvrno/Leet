@@ -1,5 +1,5 @@
 ﻿using Leet;
 
-int[] ints = Arrays.SearchRange([2, 2], 2);
+Arrays.SearchInsert([1, 3, 5, 6], 2);
 
 return;

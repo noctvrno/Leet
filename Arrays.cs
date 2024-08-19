@@ -86,4 +86,30 @@ public static class Arrays
 
         return -1;
     }
+
+    public static int SearchInsert(int[] numbers, int target)
+    {
+        var start = 0;
+        var end = numbers.Length - 1;
+        var result = 0;
+        while (start <= end)
+        {
+            var middle = (start + end) / 2;
+            var value = numbers[middle];
+            if (target == value)
+                return middle;
+
+            if (target < value)
+            {
+                end = middle - 1;
+                result = middle;
+                continue;
+            }
+
+            start = middle + 1;
+            result = start;
+        }
+
+        return result;
+    }
 }
