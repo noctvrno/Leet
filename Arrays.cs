@@ -112,4 +112,30 @@ public static class Arrays
 
         return result;
     }
+
+    public static int MaxArea(int[] height)
+    {
+        var maxContainerArea = 0;
+        int start = 0;
+        int end = height.Length - 1;
+        while (start <= end)
+        {
+            var firstHeight = height[start];
+            var secondHeight = height[end];
+            var containerHeight = Math.Min(firstHeight, secondHeight);
+            var containerWidth = end - start;
+            var containerArea = containerHeight * containerWidth;
+
+            maxContainerArea = Math.Max(containerArea, maxContainerArea);
+            if (firstHeight >= secondHeight)
+            {
+                --end;
+                continue;
+            }
+
+            ++start;
+        }
+
+        return maxContainerArea;
+    }
 }
