@@ -138,4 +138,24 @@ public static class Arrays
 
         return maxContainerArea;
     }
+
+    public static int FindClosestNumber(int[] numbers)
+    {
+        var closestToZero = int.MaxValue;
+        foreach (int number in numbers)
+        {
+            var absoluteNumber = Math.Abs(number);
+            var absoluteClosestToZero = Math.Abs(closestToZero);
+            if (absoluteNumber < absoluteClosestToZero)
+            {
+                closestToZero = number;
+                continue;
+            }
+
+            if (absoluteNumber == absoluteClosestToZero)
+                closestToZero = Math.Max(number, closestToZero);
+        }
+
+        return closestToZero;
+    }
 }
