@@ -22,4 +22,38 @@ public static class Strings
 
         return mergedChars.ToString();
     }
+
+    public static int RomanToInt(string s)
+    {
+        var romanNumeralToValue = new Dictionary<char, int>
+        {
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000},
+        };
+
+        if (s.Length == 1)
+            return romanNumeralToValue[s[0]];
+
+        var romanNumeral = 0;
+        for (var index = 0; index < s.Length; ++index)
+        {
+            var currentNumeralValue = romanNumeralToValue[s[index]];
+            var nextNumeralValue = index < s.Length - 1 ? romanNumeralToValue[s[index + 1]] : 0;
+            if (currentNumeralValue < nextNumeralValue)
+            {
+                romanNumeral += nextNumeralValue - currentNumeralValue;
+                ++index;
+                continue;
+            }
+
+            romanNumeral += currentNumeralValue;
+        }
+
+        return romanNumeral;
+    }
 }
