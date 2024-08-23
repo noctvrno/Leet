@@ -56,4 +56,32 @@ public static class Strings
 
         return romanNumeral;
     }
+
+    public static string LongestCommonPrefix(string[] strings)
+    {
+        if (strings.Length == 1)
+            return strings[0];
+
+        var minimumStringLength = strings.Min(s => s.Length);
+        var stringBuilder = new StringBuilder(minimumStringLength);
+        var charIndex = 0;
+        while (charIndex < minimumStringLength)
+        {
+            char currentChar = '\0';
+            for (var strIndex = 0; strIndex < strings.Length - 1; ++strIndex)
+            {
+                string currentStr = strings[strIndex];
+                string nextStr = strings[strIndex + 1];
+                currentChar = currentStr[charIndex];
+                char nextChar = nextStr[charIndex];
+                if (currentChar != nextChar)
+                    return stringBuilder.ToString();
+            }
+
+            stringBuilder.Append(currentChar);
+            ++charIndex;
+        }
+
+        return stringBuilder.ToString();
+    }
 }

@@ -1,5 +1,5 @@
 ﻿using Leet;
 
-int romanNumeralValue = Strings.RomanToInt("MCMXCIV");
+string str = Strings.LongestCommonPrefix(["flower", "flow", "flight"]);
 
 return;
