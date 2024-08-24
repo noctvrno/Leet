@@ -195,4 +195,53 @@ public static class Arrays
             --right;
         }
     }
+
+    public static IList<IList<int>> ThreeSum(int[] numbers)
+    {
+        numbers = numbers.Order().ToArray();
+        IList<IList<int>> result = [];
+        for (var i = 0; i < numbers.Length; ++i)
+        {
+            var currentNumber = numbers[i];
+            if (currentNumber > 0)
+                return result;
+            if (i > 0 && currentNumber == numbers[i - 1])
+                continue;
+
+            var left = i + 1;
+            var right = numbers.Length - 1;
+            while (left < right)
+            {
+                var leftNumber = numbers[left];
+                var rightNumber = numbers[right];
+                var sum = currentNumber + leftNumber + rightNumber;
+                switch (sum)
+                {
+                    case 0:
+                        result.Add([currentNumber, leftNumber, rightNumber]);
+                        ++left;
+                        while (left < right && numbers[left] == numbers[left - 1])
+                        {
+                            ++left;
+                        }
+
+                        --right;
+                        while (left < right && numbers[right] == numbers[right + 1])
+                        {
+                            --right;
+                        }
+
+                        continue;
+                    case > 0:
+                        --right;
+                        continue;
+                    case < 0:
+                        ++left;
+                        continue;
+                }
+            }
+        }
+
+        return result;
+    }
 }
