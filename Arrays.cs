@@ -158,4 +158,41 @@ public static class Arrays
 
         return closestToZero;
     }
+
+    public static int[] SortedSquares(int[] numbers)
+    {
+        int left = 0;
+        int right = numbers.Length - 1;
+        List<int> result = [];
+        while (left <= right)
+        {
+            int leftNumber = Math.Abs(numbers[left]);
+            int rightNumber = Math.Abs(numbers[right]);
+
+            if (leftNumber > rightNumber)
+            {
+                result.Add(leftNumber * leftNumber);
+                ++left;
+                continue;
+            }
+
+            result.Add(rightNumber * rightNumber);
+            --right;
+        }
+
+        Reverse(result);
+        return [.. result];
+    }
+
+    private static void Reverse(List<int> numbers)
+    {
+        var left = 0;
+        int right = numbers.Count - 1;
+        while (left < right)
+        {
+            (numbers[left], numbers[right]) = (numbers[right], numbers[left]);
+            ++left;
+            --right;
+        }
+    }
 }
