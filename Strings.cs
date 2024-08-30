@@ -84,4 +84,35 @@ public static class Strings
 
         return stringBuilder.ToString();
     }
+
+    public static int CalPoints(string[] operations)
+    {
+        Stack<int> stack = new();
+        foreach (var operation in operations)
+        {
+            switch (operation)
+            {
+                case var _ when int.TryParse(operation, out int result):
+                    stack.Push(result);
+                    break;
+                case "+":
+                    var mostRecent = stack.Pop();
+                    var secondMostRecent = stack.Count > 0
+                        ? stack.Peek()
+                        : 0;
+
+                    stack.Push(mostRecent);
+                    stack.Push(mostRecent + secondMostRecent);
+                    break;
+                case "D":
+                    stack.Push(stack.Peek() * 2);
+                    break;
+                case "C":
+                    stack.Pop();
+                    break;
+            }
+        }
+
+        return stack.Sum(); // Could replace this by using a variable that gets modified throughout operations.
+    }
 }
