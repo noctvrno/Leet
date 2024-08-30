@@ -1,5 +1,5 @@
 ﻿using Leet;
 
-var result = Strings.CalPoints(["1", "C"]);
+var result = Strings.IsValid("(]");
 
 return;

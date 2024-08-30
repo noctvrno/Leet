@@ -115,4 +115,33 @@ public static class Strings
 
         return stack.Sum(); // Could replace this by using a variable that gets modified throughout operations.
     }
+
+    public static bool IsValid(string s)
+    {
+        if (s.Length == 1)
+            return false;
+
+        Stack<char> openBracketStack = new();
+        Dictionary<char, char> closedBracketToOpenBracket = new()
+        {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}
+        };
+
+        foreach (var bracket in s)
+        {
+            if (closedBracketToOpenBracket.TryGetValue(bracket, out var correspondingOpenBracket) &&
+                openBracketStack.TryPeek(out var lastOpenBracket) &&
+                correspondingOpenBracket == lastOpenBracket)
+            {
+                openBracketStack.Pop();
+                continue;
+            }
+
+            openBracketStack.Push(bracket);
+        }
+
+        return openBracketStack.Count == 0;
+    }
 }
