@@ -144,4 +144,45 @@ public static class Strings
 
         return openBracketStack.Count == 0;
     }
+
+    public static int EvalRPN(string[] tokens)
+    {
+        if (tokens.Length == 1)
+            return int.Parse(tokens[0]);
+
+        Stack<int> stack = new();
+        foreach (var token in tokens)
+        {
+            int mostRecent;
+            int secondMostRecent;
+            switch (token)
+            {
+                case var _ when int.TryParse(token, out var result):
+                    stack.Push(result);
+                    break;
+                case "+":
+                    mostRecent = stack.Pop();
+                    secondMostRecent = stack.Pop();
+                    stack.Push(secondMostRecent + mostRecent);
+                    break;
+                case "-":
+                    mostRecent = stack.Pop();
+                    secondMostRecent = stack.Pop();
+                    stack.Push(secondMostRecent - mostRecent);
+                    break;
+                case "*":
+                    mostRecent = stack.Pop();
+                    secondMostRecent = stack.Pop();
+                    stack.Push(secondMostRecent * mostRecent);
+                    break;
+                case "/":
+                    mostRecent = stack.Pop();
+                    secondMostRecent = stack.Pop();
+                    stack.Push(secondMostRecent / mostRecent);
+                    break;
+            }
+        }
+
+        return stack.Single();
+    }
 }
