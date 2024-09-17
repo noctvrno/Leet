@@ -1,5 +1,5 @@
 ﻿using Leet;
 
-var result = Strings.EvalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]);
+LinkedLists.DeleteDuplicates(new ListNode(1, new ListNode(1, new ListNode(2))));
 
 return;
